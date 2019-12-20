@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: gunicorn --chdir hello --timeout 1000 --workers=3 --bind :8000 hello.wsgi:application
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+
